@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class moveCharacter : MonoBehaviour
 {
 
-    
 
+    Animator anim;
     public CharacterController cc;
     public Transform checkPos;
     public LayerMask groundMask;
@@ -19,20 +19,18 @@ public class moveCharacter : MonoBehaviour
     public bool grounded;
     public static Vector2 coord;
 
-   
-    
 
 
-    
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
         cc = GetComponent<CharacterController>();
-        
-        
-        
+
     }
 
     // Update is called once per frame
@@ -46,7 +44,7 @@ public class moveCharacter : MonoBehaviour
         movement += transform.forward * xSpeed;
         float zSpeed = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         movement += transform.right * zSpeed;
-
+        anim.SetFloat("Speed Forward", movement.magnitude);
         //Gravtity
 
         verticalSpeed += Gravity * Time.deltaTime;
