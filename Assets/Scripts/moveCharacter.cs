@@ -11,7 +11,6 @@ public class moveCharacter : MonoBehaviour
     public CharacterController cc;
     public Transform checkPos;
     public LayerMask groundMask;
-    public Transform camTransform;
     public float speed = 5f;
     public float verticalSpeed = 0;
     public float Gravity = -9.8f;
@@ -20,7 +19,8 @@ public class moveCharacter : MonoBehaviour
     public static Vector2 coord;
 
 
-    private float facing = 1;
+    private float facingZ = 1;
+    private float facingX = 1;
 
 
 
@@ -36,19 +36,22 @@ public class moveCharacter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //Brednan Edits
+        Controls();
+        Movement();
 
 
         //movement
+
         Vector3 movement = Vector3.zero;
 
         float xSpeed = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-
 
         movement += transform.forward * xSpeed;
         float zSpeed = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         movement += transform.right * zSpeed;
         anim.SetFloat("Speed Forward", movement.magnitude);
+
         //Gravtity
 
         verticalSpeed += Gravity * Time.deltaTime;
@@ -74,12 +77,62 @@ public class moveCharacter : MonoBehaviour
             verticalSpeed = jumpSpeed;
         }
 
-        RaycastHit hit;
-        if (Physics.Raycast(camTransform.position, camTransform.forward, out hit, 6))
+        //RaycastHit hit;
+        //if (Physics.Raycast(camTransform.position, camTransform.forward, out hit, 6))
+        //{
+
+
+        //}
+        //cc.Move(movement);
+    }
+
+    void Controls()
+    {
+        float inputZ = (Input.GetAxisRaw("Vertical"));
+        float inputX = (Input.GetAxisRaw("Horizontal"));
+
+        facingZ = inputZ;
+        facingX = inputX;
+    }
+
+    void Movement()
+    {
+        //Debug.Log("facingY = " + facingY);
+        //Debug.Log("facingX = " + facingX);
+
+        //W
+        if (facingZ > 0)
         {
 
-
+            //FIX ME
+            if(transform.eulerAngles.y < 0)
+            {
+                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 0f, 0f), Time.deltaTime * 4f);
+            }
+            else if (transform.eulerAngles.y > 0)
+            {
+                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 360f, 0f), Time.deltaTime * 4f);
+            }
+            
+            transform.position += new Vector3(0, 0, Time.deltaTime);
         }
-        cc.Move(movement);
+        //A
+        if (facingX > 0)
+        {
+            transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 90f, 0f), Time.deltaTime * 4f);
+            transform.position += new Vector3(Time.deltaTime, 0);
+        }
+        //S
+        if (facingZ < 0)
+        {
+            transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 180f, 0f), Time.deltaTime * 4f);
+            transform.position += new Vector3(0, 0, -Time.deltaTime);
+        }
+        //D
+        if (facingX < 0)
+        {
+            transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 270f, 0f), Time.deltaTime * 4f);
+            transform.position += new Vector3(-Time.deltaTime, 0);
+        }
     }
 }
