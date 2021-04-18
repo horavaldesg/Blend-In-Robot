@@ -20,7 +20,7 @@ public class moveCharacter : MonoBehaviour
     public static Vector2 coord;
 
 
-
+    private float facing = 1;
 
 
 
@@ -36,11 +36,15 @@ public class moveCharacter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
+
         //movement
         Vector3 movement = Vector3.zero;
 
-
         float xSpeed = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+
+
         movement += transform.forward * xSpeed;
         float zSpeed = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         movement += transform.right * zSpeed;
