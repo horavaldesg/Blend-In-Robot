@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class AnimationController : MonoBehaviour
 {
     Animator anim;
@@ -32,6 +32,7 @@ public class AnimationController : MonoBehaviour
         if (walk)
         {
             Walk();
+
         }
         else if (still)
         {
@@ -48,6 +49,7 @@ public class AnimationController : MonoBehaviour
         for (int i = 0; i < robots.Length; i++)
         {
             robots[i].GetComponent<Animator>().Play("RobotWalk");
+            robots[i].GetComponent<NavMeshAgent>().speed = 1;
 
         }
     }
@@ -56,6 +58,7 @@ public class AnimationController : MonoBehaviour
         for (int i = 0; i < robots.Length; i++)
         {
             robots[i].GetComponent<Animator>().Play("Still");
+            robots[i].GetComponent<NavMeshAgent>().speed = 0;
 
 
         }
