@@ -84,26 +84,11 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 256
-  camTransform: {fileID: 0}
   speed: 5
   verticalSpeed: 0
   Gravity: -9.8
   jumpSpeed: 5
   grounded: 0
---- !u!114 &1187470207355599867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7010847560890023810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 430682f22850140e0af75f3d027d64b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sens: 50
-  camTransform: {fileID: 0}
 --- !u!1001 &7893369132862554835
 PrefabInstance:
   m_ObjectHideFlags: 0

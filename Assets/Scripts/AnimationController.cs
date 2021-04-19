@@ -9,6 +9,8 @@ public class AnimationController : MonoBehaviour
     Animation robotAnim;
     public bool walk;
     public bool still;
+    public bool animCheck;
+    AnimatorClipInfo[] clipInfo;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,10 @@ public class AnimationController : MonoBehaviour
         {
             Still();
         }
+        else if (animCheck)
+        {
+            AnimCheck();
+        }
         else
         {
             Still();
@@ -63,4 +69,15 @@ public class AnimationController : MonoBehaviour
 
         }
     }
+    void AnimCheck()
+    {
+        for (int i = 0; i < robots.Length; i++)
+        {
+            clipInfo = robots[i].GetComponent<Animator>().GetCurrentAnimatorClipInfo(i);
+            robots[i].GetComponent<Animator>().Play("RobotWalk");
+            robots[i].GetComponent<NavMeshAgent>().speed = 1;
+            
+        }
+    }
+
 }
