@@ -1617,7 +1617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 466d94129d49b463c9358c70687f234f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightTransform: {fileID: 1511513647}
+  lightTransform: {fileID: 1726963288}
 --- !u!135 &1511513649
 SphereCollider:
   m_ObjectHideFlags: 0
