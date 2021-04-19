@@ -1617,6 +1617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 466d94129d49b463c9358c70687f234f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightTransform: {fileID: 1511513647}
 --- !u!135 &1511513649
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2514,10 +2515,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 424626479950295025, guid: fd0eac1d436b14de794ac519dbf0f744,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 19.7
+      objectReference: {fileID: 0}
     - target: {fileID: 424626479950295031, guid: fd0eac1d436b14de794ac519dbf0f744,
         type: 3}
       propertyPath: m_Name
       value: Spot Light
       objectReference: {fileID: 0}
+    - target: {fileID: 424626481438183942, guid: fd0eac1d436b14de794ac519dbf0f744,
+        type: 3}
+      propertyPath: lightTransform
+      value: 
+      objectReference: {fileID: 33941948}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd0eac1d436b14de794ac519dbf0f744, type: 3}
