@@ -88,8 +88,8 @@ public class moveCharacter : MonoBehaviour
 
     void Controls()
     {
-        float inputZ = (Input.GetAxisRaw("Vertical"));
-        float inputX = (Input.GetAxisRaw("Horizontal"));
+        float inputZ = Input.GetAxisRaw("Vertical");
+        float inputX = Input.GetAxisRaw("Horizontal");
 
         facingZ = inputZ;
         facingX = inputX;
@@ -105,21 +105,28 @@ public class moveCharacter : MonoBehaviour
         {
 
             //FIX ME
-            if(transform.eulerAngles.y > 0)
+            if (transform.localEulerAngles.y < 180)
             {
-                transform.localEulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 0f, 0f), Time.deltaTime * 4f);
+                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 0, 0f), Time.deltaTime * 4f);
             }
-            else if (transform.eulerAngles.y < 0)
+            else if (transform.localEulerAngles.y > 0)
             {
-                transform.localEulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 360f, 0f), Time.deltaTime * 4f);
+                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 360, 0f), Time.deltaTime * 4f);
             }
-            
+
             transform.position += new Vector3(0, 0, Time.deltaTime);
         }
-        //A
+        //D
         if (facingX > 0)
         {
-            transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 90f, 0f), Time.deltaTime * 4f);
+            if (transform.localEulerAngles.y < -90)
+            {
+                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, -270, 0f), Time.deltaTime * 4f);
+            }
+            else if (transform.localEulerAngles.y > -90)
+            {
+                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 90f, 0f), Time.deltaTime * 4f);
+            }
             transform.position += new Vector3(Time.deltaTime, 0);
         }
         //S
@@ -128,10 +135,17 @@ public class moveCharacter : MonoBehaviour
             transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 180f, 0f), Time.deltaTime * 4f);
             transform.position += new Vector3(0, 0, -Time.deltaTime);
         }
-        //D
+        //A
         if (facingX < 0)
         {
+            if(transform.localEulerAngles.y > 90) {
+
             transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 270f, 0f), Time.deltaTime * 4f);
+            }
+            else if (transform.localEulerAngles.y < 90)
+            {
+                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, -90f, 0f), Time.deltaTime * 4f);
+            }
             transform.position += new Vector3(-Time.deltaTime, 0);
         }
     }
