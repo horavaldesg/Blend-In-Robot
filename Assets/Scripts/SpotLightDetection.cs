@@ -34,12 +34,18 @@ public class SpotLightDetection : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        GetComponentInParent<Light>().spotAngle = Mathf.Lerp(GetComponentInParent<Light>().spotAngle, 30, Time.deltaTime);
-        GetComponentInParent<Animator>().enabled = true;
+        if(other.tag == "Player")
+            GrowSpotLight();
     }
     private void OnTriggerStay(Collider other)
     {
         
         
+    }
+    void GrowSpotLight()
+    {
+        
+        GetComponentInParent<Light>().spotAngle = 30;
+        GetComponentInParent<Animator>().enabled = true;
     }
 }
