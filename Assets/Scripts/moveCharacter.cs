@@ -119,14 +119,16 @@ public class moveCharacter : MonoBehaviour
         //D
         if (facingX > 0)
         {
-            if (transform.localEulerAngles.y < -90)
+            if (transform.localEulerAngles.y > -90)
             {
-                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, -270, 0f), Time.deltaTime * 4f);
+                Debug.Log("Positive");
+                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 90, 0f), Time.deltaTime * 4f);
             }
-            else if (transform.localEulerAngles.y > -90)
-            {
-                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 90f, 0f), Time.deltaTime * 4f);
-            }
+            //else if (transform.localEulerAngles.y < -90 )
+            //{
+            //    Debug.Log("Negative");
+            //    transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, -270, 0f), Time.deltaTime * 4f);
+            //}
             transform.position += new Vector3(Time.deltaTime, 0);
         }
         //S
