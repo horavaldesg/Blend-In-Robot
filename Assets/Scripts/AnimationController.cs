@@ -21,6 +21,8 @@ public class AnimationController : MonoBehaviour
         for (int i = 0; i < robots.Length; i++)
         {
             robots[i].GetComponent<Animator>().runtimeAnimatorController = anim.runtimeAnimatorController;
+            //Every robot position
+            //Debug.Log(robots[i].transform.position);
 
         }
 
@@ -71,13 +73,20 @@ public class AnimationController : MonoBehaviour
     }
     void AnimCheck()
     {
+        //Robot randomizer
+        //int r = Random.Range(0, robots.Length);
+
         for (int i = 0; i < robots.Length; i++)
         {
+            
             clipInfo = robots[i].GetComponent<Animator>().GetCurrentAnimatorClipInfo(i);
             robots[i].GetComponent<Animator>().Play("RobotWalk");
             robots[i].GetComponent<NavMeshAgent>().speed = 1;
-            
+            //One random robot
+            //robots[r].GetComponent<Animator>().Play(" ");
+
         }
+        
     }
 
 }

@@ -121,7 +121,7 @@ public class moveCharacter : MonoBehaviour
         {
             if (transform.localEulerAngles.y > -90)
             {
-                Debug.Log("Positive");
+                //Debug.Log("Positive");
                 transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 90, 0f), Time.deltaTime * 4f);
             }
             //else if (transform.localEulerAngles.y < -90 )
