@@ -123,6 +123,7 @@ public class moveCharacter : MonoBehaviour
             {
                 //Debug.Log("Positive");
                 transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 90, 0f), Time.deltaTime * 4f);
+                //transform.rotation = Quaternion.Lerp(Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z), Quaternion.Euler(0, 90, 0), Time.deltaTime *4f);
             }
             //else if (transform.localEulerAngles.y < -90 )
             //{
