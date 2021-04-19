@@ -105,13 +105,13 @@ public class moveCharacter : MonoBehaviour
         {
 
             //FIX ME
-            if(transform.eulerAngles.y < 0)
+            if(transform.eulerAngles.y > 0)
             {
-                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 0f, 0f), Time.deltaTime * 4f);
+                transform.localEulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 0f, 0f), Time.deltaTime * 4f);
             }
-            else if (transform.eulerAngles.y > 0)
+            else if (transform.eulerAngles.y < 0)
             {
-                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 360f, 0f), Time.deltaTime * 4f);
+                transform.localEulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 360f, 0f), Time.deltaTime * 4f);
             }
             
             transform.position += new Vector3(0, 0, Time.deltaTime);
