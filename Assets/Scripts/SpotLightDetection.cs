@@ -34,7 +34,7 @@ public class SpotLightDetection : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
             GrowSpotLight();
     }
     private void OnTriggerStay(Collider other)
@@ -44,8 +44,9 @@ public class SpotLightDetection : MonoBehaviour
     }
     void GrowSpotLight()
     {
-        
+
         GetComponentInParent<Light>().spotAngle = 30;
         GetComponentInParent<Animator>().enabled = true;
     }
+
 }
