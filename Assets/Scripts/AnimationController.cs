@@ -26,6 +26,7 @@ public class AnimationController : MonoBehaviour
 
         }
 
+
     }
 
     
@@ -58,8 +59,8 @@ public class AnimationController : MonoBehaviour
         {
             robots[i].GetComponent<Animator>().Play("RobotWalk");
             robots[i].GetComponent<NavMeshAgent>().speed = 1;
-
         }
+        
     }
     void Still()
     {
@@ -88,5 +89,6 @@ public class AnimationController : MonoBehaviour
         }
         
     }
+    
 
 }
