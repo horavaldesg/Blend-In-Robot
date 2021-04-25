@@ -4,21 +4,25 @@ using UnityEngine;
 using UnityEngine.AI;
 public class BehaviourScript : MonoBehaviour
 {
-    public GameObject player;
+    GameObject player;
     NavMeshAgent agent;
-    public Transform target;
+    Transform target;
     AudioSource audioSc;
     Rigidbody rb;
     float speed = 3f;
     float minDistance = 1;
     float safeDistance = 10;
     float specPos = 20;
-    public enum BehaviorState {Move, Flee};
+    public enum BehaviorState {Move, Idle};
 
     public BehaviorState currentState;
     // Start is called before the first frame update
     void Start()
     {
+        GameObject targetLocation = GameObject.FindGameObjectWithTag("Finish");
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        target = targetLocation.transform;
+        player = playerObj;
         audioSc = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
@@ -36,7 +40,7 @@ public class BehaviourScript : MonoBehaviour
         {
             case BehaviorState.Move: Move();
                 break;
-            case BehaviorState.Flee: Flee();
+            case BehaviorState.Idle: Idle();
                 break;
             default: Debug.Log("Switch error");
                 break;
@@ -47,27 +51,21 @@ public class BehaviourScript : MonoBehaviour
     }
 
     
-    void Flee()
+    void Idle()
     {
 
         Vector3 differenceVector = transform.position - target.position;
-        if(differenceVector.magnitude < safeDistance)
-        {
-            agent.destination = transform.position + differenceVector;
-            
 
-        }
-        else
-        {
-
-            agent.destination = transform.position;
-        }
+        GetComponent<Animator>().Play("Still");
+        agent.destination = transform.position;
+        
 
 
     }
     void Move()
     {
         Vector3 differenceVector = target.position - transform.position;
+        GetComponent<Animator>().Play("RobotWalk");
         if (differenceVector.magnitude > minDistance)
         {
             agent.destination = target.position;
@@ -81,4 +79,5 @@ public class BehaviourScript : MonoBehaviour
             agent.destination = transform.position;
         }
     }
+    
 }
