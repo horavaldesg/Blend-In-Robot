@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class AnimationController : MonoBehaviour
 {
     Animator anim;
-    GameObject[] robots;
+    public static GameObject[] robots;
     public static Animator currentAnim;
     public bool walk;
     public bool still;
@@ -15,9 +15,9 @@ public class AnimationController : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        robots = GameObject.FindGameObjectsWithTag("Robot");
-       
 
+
+        robots = GameObject.FindGameObjectsWithTag("Robot");
         for (int i = 0; i < robots.Length; i++)
         {
             robots[i].GetComponent<Animator>().runtimeAnimatorController = anim.runtimeAnimatorController;
@@ -35,10 +35,13 @@ public class AnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach(GameObject robot in robots)
+       /*
+        foreach (GameObject robot in robots)
         {
             clipInfo =robot.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0);
+            robot.GetComponent<Animator>().runtimeAnimatorController = anim.runtimeAnimatorController;
         }
+       */
         if (walk)
         {
             Walk();
@@ -65,7 +68,7 @@ public class AnimationController : MonoBehaviour
             robots[i].GetComponent<Animator>().Play("RobotWalk");
             robots[i].GetComponent<NavMeshAgent>().speed = 1;
         }
-        
+       
     }
     void Still()
     {
