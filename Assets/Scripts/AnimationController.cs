@@ -10,7 +10,7 @@ public class AnimationController : MonoBehaviour
     public bool walk;
     public bool still;
     public bool animCheck;
-    AnimatorClipInfo[] clipInfo;
+    public static AnimatorClipInfo[] clipInfo;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +21,7 @@ public class AnimationController : MonoBehaviour
         for (int i = 0; i < robots.Length; i++)
         {
             robots[i].GetComponent<Animator>().runtimeAnimatorController = anim.runtimeAnimatorController;
+            
             //Every robot position
             //Debug.Log(robots[i].transform.position);
 
@@ -34,7 +35,10 @@ public class AnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentAnim = GetComponent<Animator>();
+        foreach(GameObject robot in robots)
+        {
+            clipInfo =robot.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0);
+        }
         if (walk)
         {
             Walk();
