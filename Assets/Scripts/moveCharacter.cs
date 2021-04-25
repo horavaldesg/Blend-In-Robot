@@ -38,7 +38,8 @@ public class moveCharacter : MonoBehaviour
     {
         //Brednan Edits
         Controls();
-        Movement();
+        //Movement();
+        Movement2();
 
 
         //movement
@@ -150,6 +151,48 @@ public class moveCharacter : MonoBehaviour
                 transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, -90f, 0f), Time.deltaTime * 4f);
             }
             transform.position += new Vector3(-Time.deltaTime, 0);
+        }
+    }
+
+    void Movement2()
+    {
+        //W
+        if (facingZ > 0)
+        {
+            transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 0, 0f), Time.deltaTime * 4f);
+            transform.position += new Vector3(0, 0, Time.deltaTime);
+        }
+        //A
+        if (facingX < 0)
+        {
+            if (transform.localEulerAngles.y > 90)
+            {
+                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 270f, 0f), Time.deltaTime * 4f);
+            }
+            else if (transform.localEulerAngles.y < 90)
+            {
+                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, -90f, 0f), Time.deltaTime * 4f);
+            }
+            transform.position += new Vector3(-Time.deltaTime, 0);
+        }
+        //S
+        if (facingZ < 0)
+        {
+            transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 180f, 0f), Time.deltaTime * 4f);
+            transform.position += new Vector3(0, 0, -Time.deltaTime);
+        }
+        //D
+        if (facingX > 0)
+        {
+            if (transform.localEulerAngles.y > -90)
+            {
+                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 90, 0f), Time.deltaTime * 4f);
+            }
+            else if (transform.localEulerAngles.y < -90)
+            {
+                transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, -270f, 0f), Time.deltaTime * 4f);
+            }
+            transform.position += new Vector3(Time.deltaTime, 0);
         }
     }
 }
