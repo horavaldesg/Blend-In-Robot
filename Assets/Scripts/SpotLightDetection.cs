@@ -9,7 +9,9 @@ public class SpotLightDetection : MonoBehaviour
     Color initialColor;
     Color red;
     int r = 0;
-    public bool randomRobot = false;
+    GameObject[] robots;
+   
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -24,16 +26,10 @@ public class SpotLightDetection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject[] robots;
         robots = GameObject.FindGameObjectsWithTag("Robot");
-        if (randomRobot)
-        {
-            RandomRobot(robots);
-        }
-        
 
-        
-       
+
+
         RaycastHit hit;
         if (Physics.Raycast(lightTransform.position, lightTransform.forward, out hit))
         {
@@ -54,8 +50,7 @@ public class SpotLightDetection : MonoBehaviour
     {
         AnimatorClipInfo[] currentClip;
         AnimatorClipInfo[] currentAnim;
-        GameObject[] robots;
-        robots = GameObject.FindGameObjectsWithTag("Robot");
+        
         
         
         if (other.tag == "Player")
@@ -104,11 +99,6 @@ public class SpotLightDetection : MonoBehaviour
         GetComponentInParent<Animator>().enabled = true;
     }
 
-    void RandomRobot(GameObject[] robots)
-    {
-        int i = Random.Range(0, robots.Length);
-        robots[i].GetComponent<BehaviourScript>().currentState = BehaviourScript.BehaviorState.Test;
-        randomRobot = false;
-    }
+    
    
 }
