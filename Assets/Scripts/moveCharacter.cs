@@ -39,7 +39,7 @@ public class moveCharacter : MonoBehaviour
         //Brednan Edits
         Controls();
         //Movement();
-        Movement2();
+        Movement3();
 
 
         //movement
@@ -156,11 +156,19 @@ public class moveCharacter : MonoBehaviour
 
     void Movement2()
     {
+
         //W
         if (facingZ > 0)
         {
             transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 0, 0f), Time.deltaTime * 4f);
+
             transform.position += new Vector3(0, 0, Time.deltaTime);
+        }
+        //S
+        else if (facingZ < 0)
+        {
+            transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 180f, 0f), Time.deltaTime * 4f);
+            transform.position += new Vector3(0, 0, -Time.deltaTime);
         }
         //A
         if (facingX < 0)
@@ -175,14 +183,9 @@ public class moveCharacter : MonoBehaviour
             }
             transform.position += new Vector3(-Time.deltaTime, 0);
         }
-        //S
-        if (facingZ < 0)
-        {
-            transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, new Vector3(0f, 180f, 0f), Time.deltaTime * 4f);
-            transform.position += new Vector3(0, 0, -Time.deltaTime);
-        }
+       
         //D
-        if (facingX > 0)
+         else if (facingX > 0)
         {
             if (transform.localEulerAngles.y > -90)
             {
@@ -194,8 +197,38 @@ public class moveCharacter : MonoBehaviour
             }
             transform.position += new Vector3(Time.deltaTime, 0);
         }
-        
-        Debug.Log("Facing X: " + facingX);
-        Debug.Log("Facing Z: " + facingZ);
+       
+    }
+    void Movement3()
+    {
+        //W
+        if (facingZ > 0)
+        {
+            Quaternion rotation = Quaternion.Euler(0, 0, 0);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 4);
+            transform.position += new Vector3(0, 0, Time.deltaTime);
+        }
+        //S
+        else if (facingZ < 0)
+        {
+            Quaternion rotation = Quaternion.Euler(0, 180, 0);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 4);
+            transform.position += new Vector3(0, 0, -Time.deltaTime);
+        }
+        //A
+        if (facingX < 0)
+        {
+            Quaternion rotation = Quaternion.Euler(0, -90, 0);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 4);
+            transform.position += new Vector3(-Time.deltaTime, 0);
+        }
+
+        //D
+        else if (facingX > 0)
+        {
+            Quaternion rotation = Quaternion.Euler(0, 90, 0);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 4);
+            transform.position += new Vector3(Time.deltaTime, 0);
+        }
     }
 }
