@@ -19,7 +19,7 @@ public class RobotSpawner : MonoBehaviour
     {
        
         i += Time.deltaTime;
-        Debug.Log(i);
+        //Debug.Log(i);
         if(i > spawnRate)
         {
 
