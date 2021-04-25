@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class SpotLightDetection : MonoBehaviour
 {
+    BehaviourScript bs;
     public Transform lightTransform;
     Color initialColor;
     Color red;
+    int r = 0;
+    public bool randomRobot = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,16 +17,27 @@ public class SpotLightDetection : MonoBehaviour
         red = new Color(0.811f, 0.333f, 0.333f, 1.000f);
         GetComponentInParent<Light>().color = Color.yellow;
         Debug.Log(initialColor);
+        
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        GameObject[] robots;
+        robots = GameObject.FindGameObjectsWithTag("Robot");
+        if (randomRobot)
+        {
+            RandomRobot(robots);
+        }
+        
+
+        
+       
         RaycastHit hit;
         if (Physics.Raycast(lightTransform.position, lightTransform.forward, out hit))
         {
-           
-                
+            
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -88,6 +102,13 @@ public class SpotLightDetection : MonoBehaviour
 
         GetComponentInParent<Light>().spotAngle = 30;
         GetComponentInParent<Animator>().enabled = true;
+    }
+
+    void RandomRobot(GameObject[] robots)
+    {
+        int i = Random.Range(0, robots.Length);
+        robots[i].GetComponent<BehaviourScript>().currentState = BehaviourScript.BehaviorState.Test;
+        randomRobot = false;
     }
    
 }

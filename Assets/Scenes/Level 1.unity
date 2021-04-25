@@ -1702,6 +1702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightTransform: {fileID: 1726963288}
+  randomRobot: 0
 --- !u!135 &1511513649
 SphereCollider:
   m_ObjectHideFlags: 0

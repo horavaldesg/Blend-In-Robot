@@ -13,12 +13,13 @@ public class BehaviourScript : MonoBehaviour
     float minDistance = 1;
     float safeDistance = 10;
     float specPos = 20;
-    public enum BehaviorState {Move, Idle};
+    public enum BehaviorState {Move, Idle, Test};
 
     public BehaviorState currentState;
     // Start is called before the first frame update
     void Start()
     {
+        
         GameObject targetLocation = GameObject.FindGameObjectWithTag("Finish");
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         target = targetLocation.transform;
@@ -41,6 +42,8 @@ public class BehaviourScript : MonoBehaviour
             case BehaviorState.Move: Move();
                 break;
             case BehaviorState.Idle: Idle();
+                break;
+            case BehaviorState.Test: Test();
                 break;
             default: Debug.Log("Switch error");
                 break;
@@ -79,5 +82,21 @@ public class BehaviourScript : MonoBehaviour
             agent.destination = transform.position;
         }
     }
-    
+    void Test()
+    {
+        Vector3 differenceVector = target.position - transform.position;
+        GetComponent<Animator>().Play("Still");
+        if (differenceVector.magnitude > minDistance)
+        {
+            agent.destination = target.position;
+            //rb.MovePosition(transform.position + moveVector);
+
+        }
+        else
+        {
+
+            //PlayerMovement.canMove = false;
+            agent.destination = transform.position;
+        }
+    }
 }
