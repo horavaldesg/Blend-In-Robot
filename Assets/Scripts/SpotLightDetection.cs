@@ -5,11 +5,15 @@ using UnityEngine;
 public class SpotLightDetection : MonoBehaviour
 {
     public Transform lightTransform;
-
+    Color initialColor;
+    Color red;
     // Start is called before the first frame update
     void Start()
     {
-        
+        initialColor = GetComponentInParent<Light>().color;
+        red = new Color(0.811f, 0.333f, 0.333f, 1.000f);
+        GetComponentInParent<Light>().color = Color.yellow;
+        Debug.Log(initialColor);
     }
 
     // Update is called once per frame
@@ -30,6 +34,7 @@ public class SpotLightDetection : MonoBehaviour
     {
         if (other.tag == "Player")
             GrowSpotLight();
+        GetComponentInParent<Light>().color = Color.yellow;
     }
     private void OnTriggerStay(Collider other)
     {
@@ -55,15 +60,18 @@ public class SpotLightDetection : MonoBehaviour
                 if (currentClip[0].clip.name == currentAnim[0].clip.name)
                 {
                     //Debug.Log(currentAnim[0].clip.name);
+                    GetComponentInParent<Light>().color = Color.green;
                     //Debug.Log(currentClip[0].clip.name);
                     Debug.Log("Correct");
                 }
-                else
+                else if(currentClip[0].clip.name != currentAnim[0].clip.name)
                 {
                     //Debug.Log(currentAnim[0].clip.name);
+                    GetComponentInParent<Light>().color = red;
                     //Debug.Log(currentClip[0].clip.name);
                     Debug.Log("Wrong Anim");
                 }
+                
             }
             //Debug.Log("Player Clip: " + currentClip[0].clip.name);
             //Debug.Log("Universal Clip: " + currentAnim[0].clip.name);
@@ -81,8 +89,5 @@ public class SpotLightDetection : MonoBehaviour
         GetComponentInParent<Light>().spotAngle = 30;
         GetComponentInParent<Animator>().enabled = true;
     }
-    void PlayerDetection()
-    {
-
-    }
+   
 }
