@@ -18,35 +18,13 @@ public class SpotLightDetection : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(lightTransform.position, lightTransform.forward, out hit))
         {
-            if (hit.collider.tag == "Player")
-            {
-                AnimatorClipInfo[] currentClip;
-                AnimatorClipInfo[] currentAnim;
-                currentAnim = AnimationController.currentAnim.GetCurrentAnimatorClipInfo(0);
-                currentClip = hit.collider.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0);
-                if(currentClip[0].clip.name == currentAnim[0].clip.name)
-                {
-                    Debug.Log(currentAnim[0].clip.name);
-                    Debug.Log(currentClip[0].clip.name);
-                    Debug.Log("Correct");
-                }
-                else
-                {
-                    Debug.Log(currentAnim[0].clip.name);
-                    Debug.Log(currentClip[0].clip.name);
-                    Debug.Log("Wrong Anim");
-                }
+           
                 
-                GetComponentInParent<Animator>().enabled = false;
-                GetComponentInParent<Light>().spotAngle = Mathf.Lerp(GetComponentInParent<Light>().spotAngle, 20, Time.deltaTime);
-            }
-
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-        
-        
+       
     }
     private void OnTriggerExit(Collider other)
     {
@@ -55,8 +33,37 @@ public class SpotLightDetection : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        
-        
+        if (other.tag == "Player")
+        {
+            //GetComponentInParent<Animator>().enabled = false;
+
+            //lightTransform.position = new Vector3(other.transform.position.x, lightTransform.position.y, lightTransform.position.z);
+            //GetComponentInParent<Light>().spotAngle = Mathf.Lerp(GetComponentInParent<Light>().spotAngle, 20, Time.deltaTime);
+
+            AnimatorClipInfo[] currentClip;
+            AnimatorClipInfo[] currentAnim;
+            currentAnim = AnimationController.clipInfo;
+            currentClip = other.GetComponent<Collider>().GetComponent<Animator>().GetCurrentAnimatorClipInfo(0);
+            //Debug.Log("Player Clip: " + currentClip[0].clip.name);
+            //Debug.Log("Universal Clip: " + currentAnim[0].clip.name);
+
+
+            if (currentClip[0].clip.name == currentAnim[0].clip.name)
+            {
+                //Debug.Log(currentAnim[0].clip.name);
+                //Debug.Log(currentClip[0].clip.name);
+                Debug.Log("Correct");
+            }
+            else
+            {
+                //Debug.Log(currentAnim[0].clip.name);
+                //Debug.Log(currentClip[0].clip.name);
+                Debug.Log("Wrong Anim");
+            }
+
+
+        }
+
     }
     void GrowSpotLight()
     {
@@ -64,5 +71,8 @@ public class SpotLightDetection : MonoBehaviour
         GetComponentInParent<Light>().spotAngle = 30;
         GetComponentInParent<Animator>().enabled = true;
     }
+    void PlayerDetection()
+    {
 
+    }
 }
