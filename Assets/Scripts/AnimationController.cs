@@ -6,7 +6,7 @@ public class AnimationController : MonoBehaviour
 {
     Animator anim;
     GameObject[] robots;
-    Animation robotAnim;
+    public static Animator currentAnim;
     public bool walk;
     public bool still;
     public bool animCheck;
@@ -34,6 +34,7 @@ public class AnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentAnim = GetComponent<Animator>();
         if (walk)
         {
             Walk();

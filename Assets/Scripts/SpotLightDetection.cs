@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpotLightDetection : MonoBehaviour
 {
     public Transform lightTransform;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,23 @@ public class SpotLightDetection : MonoBehaviour
         {
             if (hit.collider.tag == "Player")
             {
+                AnimatorClipInfo[] currentClip;
+                AnimatorClipInfo[] currentAnim;
+                currentAnim = AnimationController.currentAnim.GetCurrentAnimatorClipInfo(0);
+                currentClip = hit.collider.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0);
+                if(currentClip[0].clip.name == currentAnim[0].clip.name)
+                {
+                    Debug.Log(currentAnim[0].clip.name);
+                    Debug.Log(currentClip[0].clip.name);
+                    Debug.Log("Correct");
+                }
+                else
+                {
+                    Debug.Log(currentAnim[0].clip.name);
+                    Debug.Log(currentClip[0].clip.name);
+                    Debug.Log("Wrong Anim");
+                }
+                
                 GetComponentInParent<Animator>().enabled = false;
                 GetComponentInParent<Light>().spotAngle = Mathf.Lerp(GetComponentInParent<Light>().spotAngle, 20, Time.deltaTime);
             }
@@ -27,9 +45,7 @@ public class SpotLightDetection : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        AnimatorClipInfo[] currentClip;
-        currentClip = other.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0);
-        Debug.Log(currentClip[0].clip.name);
+        
         
     }
     private void OnTriggerExit(Collider other)
