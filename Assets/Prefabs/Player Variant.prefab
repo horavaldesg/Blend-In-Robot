@@ -1333,6 +1333,7 @@ MonoBehaviour:
   Gravity: -9.8
   jumpSpeed: 5
   grounded: 0
+  speedBoost: 3
 --- !u!114 &4227446728145802760
 MonoBehaviour:
   m_ObjectHideFlags: 0
