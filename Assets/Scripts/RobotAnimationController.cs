@@ -15,7 +15,9 @@ public class RobotAnimationController : MonoBehaviour
     void Update()
     {
         GameObject[] robots;
+        
         robots = GameObject.FindGameObjectsWithTag("Robot");
+        Debug.Log(robots.Length);
         if (randomRobot)
         {
             RandomRobot(robots);
