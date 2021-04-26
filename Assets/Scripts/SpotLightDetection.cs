@@ -65,26 +65,22 @@ public class SpotLightDetection : MonoBehaviour
             currentClip = other.GetComponent<Collider>().GetComponent<Animator>().GetCurrentAnimatorClipInfo(0);
             foreach (GameObject robot in robots)
             {
-
-                if (robot != null)
+                currentAnim = robot.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0);
+                if (currentClip[0].clip.name == currentAnim[0].clip.name)
                 {
-                    currentAnim = robot.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0);
-                    if (currentClip[0].clip.name == currentAnim[0].clip.name)
-                    {
-                        //Debug.Log(currentAnim[0].clip.name);
-                        GetComponentInParent<Light>().color = Color.green;
-                        //Debug.Log(currentClip[0].clip.name);
-                        Debug.Log("Correct");
-                    }
-                    else if (currentClip[0].clip.name != currentAnim[0].clip.name)
-                    {
-                        //Debug.Log(currentAnim[0].clip.name);
-                        GetComponentInParent<Light>().color = red;
-                        //Debug.Log(currentClip[0].clip.name);
-                        Debug.Log("Wrong Anim");
-                    }
+                    //Debug.Log(currentAnim[0].clip.name);
+                    GetComponentInParent<Light>().color = Color.green;
+                    //Debug.Log(currentClip[0].clip.name);
+                    Debug.Log("Correct");
                 }
-
+                else if(currentClip[0].clip.name != currentAnim[0].clip.name)
+                {
+                    //Debug.Log(currentAnim[0].clip.name);
+                    GetComponentInParent<Light>().color = red;
+                    //Debug.Log(currentClip[0].clip.name);
+                    Debug.Log("Wrong Anim");
+                }
+                
             }
             //Debug.Log("Player Clip: " + currentClip[0].clip.name);
             //Debug.Log("Universal Clip: " + currentAnim[0].clip.name);

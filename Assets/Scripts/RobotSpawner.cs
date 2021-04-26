@@ -14,7 +14,6 @@ public class RobotSpawner : MonoBehaviour
     {
         Instantiate(robot, spawnerTransform);
         BehaviourScript.targetStr = target;
-
     }
 
     // Update is called once per frame
@@ -25,10 +24,9 @@ public class RobotSpawner : MonoBehaviour
         //Debug.Log(i);
         if(i > spawnRate)
         {
-           
-            GameObject robotObj = Instantiate(robot, spawnerTransform);
-            //robotObj.GetComponent<BehaviourScript>().targetLocation = GameObject.FindGameObjectWithTag(target);
-            BehaviourScript.targetStr = target;
+
+            Instantiate(robot, spawnerTransform);
+            AnimationController.robots = GameObject.FindGameObjectsWithTag("Robot");
             i = 0;
         }
 

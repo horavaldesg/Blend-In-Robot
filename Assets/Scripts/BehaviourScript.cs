@@ -9,7 +9,6 @@ public class BehaviourScript : MonoBehaviour
     Transform target;
     public static string targetStr;
     AudioSource audioSc;
-    public GameObject targetLocation;
     Rigidbody rb;
     float speed = 3f;
     float minDistance = 1;
@@ -21,8 +20,8 @@ public class BehaviourScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        GameObject targetLocation = GameObject.FindGameObjectWithTag(GetComponentInParent<RobotSpawner>().target);
+        
+        GameObject targetLocation = GameObject.FindGameObjectWithTag(targetStr);
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         target = targetLocation.transform;
         player = playerObj;
