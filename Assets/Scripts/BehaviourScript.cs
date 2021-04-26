@@ -7,6 +7,7 @@ public class BehaviourScript : MonoBehaviour
     GameObject player;
     NavMeshAgent agent;
     Transform target;
+    public static string targetStr;
     AudioSource audioSc;
     Rigidbody rb;
     float speed = 3f;
@@ -20,7 +21,7 @@ public class BehaviourScript : MonoBehaviour
     void Start()
     {
         
-        GameObject targetLocation = GameObject.FindGameObjectWithTag("Finish");
+        GameObject targetLocation = GameObject.FindGameObjectWithTag(targetStr);
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         target = targetLocation.transform;
         player = playerObj;

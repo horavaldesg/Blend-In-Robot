@@ -29,6 +29,7 @@ public class moveCharacter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        boost = 1;
         anim = GetComponent<Animator>();
         cc = GetComponent<CharacterController>();
 

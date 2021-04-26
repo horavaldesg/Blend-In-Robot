@@ -6,12 +6,14 @@ public class RobotSpawner : MonoBehaviour
 {
     public GameObject robot;
     public Transform spawnerTransform;
+    public string target;
     [SerializeField] float spawnRate = 3;
     float i = 0;
     // Start is called before the first frame update
     void Start()
     {
         Instantiate(robot, spawnerTransform);
+        BehaviourScript.targetStr = target;
     }
 
     // Update is called once per frame
