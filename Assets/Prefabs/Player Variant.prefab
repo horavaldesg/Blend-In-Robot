@@ -1305,7 +1305,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 5bef9e5ec93cd4879a0b6c290981f947, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -1328,7 +1328,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 256
-  speed: 5
+  speed: 1
   verticalSpeed: 0
   Gravity: -9.8
   jumpSpeed: 5
