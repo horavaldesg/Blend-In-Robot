@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class TargetSript : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -17,6 +17,13 @@ public class TargetSript : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject);
+        if(other.tag == "Robot")
+        {
+            Destroy(other.gameObject);
+        }
+        if(other.tag == "Player")
+        {
+            SceneManager.LoadScene("End");
+        }
     }
 }
