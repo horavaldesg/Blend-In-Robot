@@ -1331,7 +1331,7 @@ MonoBehaviour:
   speed: 1
   verticalSpeed: 0
   Gravity: -9.8
-  jumpSpeed: 5
+  jumpSpeed: 1
   grounded: 0
   speedBoost: 3
 --- !u!114 &4227446728145802760
