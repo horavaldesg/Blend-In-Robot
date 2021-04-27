@@ -38,7 +38,7 @@ public class SpotLightDetection : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-       
+        
     }
     private void OnTriggerExit(Collider other)
     {
@@ -80,6 +80,7 @@ public class SpotLightDetection : MonoBehaviour
                     {
                         //Debug.Log(currentAnim[0].clip.name);
                         GetComponentInParent<Light>().color = red;
+                        ClawPlayer();
                         //Debug.Log(currentClip[0].clip.name);
                         Debug.Log("Wrong Anim");
                     }
@@ -102,7 +103,15 @@ public class SpotLightDetection : MonoBehaviour
         GetComponentInParent<Light>().spotAngle = 30;
         GetComponentInParent<Animator>().enabled = true;
     }
+    void ClawPlayer()
+    {
 
-    
-   
+        //GetComponent<Collider>().enabled = false;
+        //Time.timeScale = 0;
+        Debug.Log("Wrong Anim");
+        Debug.Log("PlayerClawed");
+        
+
+    }
+
 }
