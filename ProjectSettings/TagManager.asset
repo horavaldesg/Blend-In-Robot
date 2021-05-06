@@ -8,6 +8,7 @@ TagManager:
   - Target 1
   - Target 2
   - Spawner
+  - StopLight
   layers:
   - Default
   - TransparentFX
