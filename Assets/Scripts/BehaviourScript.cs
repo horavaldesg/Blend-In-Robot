@@ -16,7 +16,8 @@ public class BehaviourScript : MonoBehaviour
     float safeDistance = 10;
     float specPos = 20;
     public enum BehaviorState {Move, Idle, Test};
-
+    int i = 0;
+    public static int state = 0;
     public BehaviorState currentState;
     // Start is called before the first frame update
     void Start()
@@ -34,11 +35,32 @@ public class BehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (i > 3)
+        {
+            
+            i = 0;
+        }
     }
 
     private void FixedUpdate()
     {
+
+        switch (state)
+        {
+            case 1:
+                Move();
+                break;
+            case 2:
+                Idle();
+                break;
+            case 3:
+                Test();
+                break;
+            default:
+                Debug.Log("Switch error");
+                break;
+        }
+
         switch (currentState)
         {
             case BehaviorState.Move: Move();

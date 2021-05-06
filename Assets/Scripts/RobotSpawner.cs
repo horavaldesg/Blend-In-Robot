@@ -12,6 +12,7 @@ public class RobotSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        i = 4;
         Instantiate(robot, spawnerTransform);
         BehaviourScript.targetStr = target;
 
