@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6104957973581437954}
   m_Layer: 0
   m_Name: Spawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,4 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   robot: {fileID: 5129751015965923075, guid: 7abfa3448a50f458c854f8ac79f9d4a9, type: 3}
   spawnerTransform: {fileID: 6104957973581437955}
+  target: 
   spawnRate: 3

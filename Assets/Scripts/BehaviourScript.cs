@@ -17,7 +17,7 @@ public class BehaviourScript : MonoBehaviour
     float specPos = 20;
     public enum BehaviorState {Move, Idle, Test};
     int i = 0;
-    public static int state = 0;
+    public static int state = 1;
     public BehaviorState currentState;
     // Start is called before the first frame update
     void Start()
@@ -60,7 +60,7 @@ public class BehaviourScript : MonoBehaviour
                 Debug.Log("Switch error");
                 break;
         }
-
+        /*
         switch (currentState)
         {
             case BehaviorState.Move: Move();
@@ -72,7 +72,7 @@ public class BehaviourScript : MonoBehaviour
             default: Debug.Log("Switch error");
                 break;
         }
-        
+        */
        
         
     }
@@ -109,7 +109,7 @@ public class BehaviourScript : MonoBehaviour
     void Test()
     {
         Vector3 differenceVector = target.position - transform.position;
-        GetComponent<Animator>().Play("Still");
+        GetComponent<Animator>().Play("RobotWalk");
         if (differenceVector.magnitude > minDistance)
         {
             agent.destination = target.position;

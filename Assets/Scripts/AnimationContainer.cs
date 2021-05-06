@@ -6,7 +6,8 @@ public class AnimationContainer : MonoBehaviour
 {
     public static string currentAnim;
     GameObject[] robots;
-    int i = 0;
+    float i = 0;
+    [SerializeField] int rate = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,8 @@ public class AnimationContainer : MonoBehaviour
     {
         if (robots != null)
         {
+            i += Time.deltaTime;
+            Debug.Log(i);
             robots = GameObject.FindGameObjectsWithTag("Robot");
             //Debug.Log(robots.Length -2);
             foreach (GameObject robot in robots)
@@ -29,8 +32,28 @@ public class AnimationContainer : MonoBehaviour
                     //Debug.Log(robot.name + i++ + " " + clipInfo);
                     currentAnim = clipInfo;
                 }
-
-                BehaviourScript.state = Random.Range(0, 3);
+                if (i > rate)
+                {
+                    BehaviourScript.state = Random.Range(1, 3);
+                    Debug.Log(BehaviourScript.state);
+                    i = 0;
+                }
+                if(BehaviourScript.state == 2)
+                {
+                    GameObject[] spawners = GameObject.FindGameObjectsWithTag("Spawner");
+                    foreach(GameObject spawner in spawners)
+                    {
+                        spawner.GetComponent<RobotSpawner>().enabled = false;
+                    }
+                }
+                else
+                {
+                    GameObject[] spawners = GameObject.FindGameObjectsWithTag("Spawner");
+                    foreach (GameObject spawner in spawners)
+                    {
+                        spawner.GetComponent<RobotSpawner>().enabled = true;
+                    }
+                }
                
             }
         }
