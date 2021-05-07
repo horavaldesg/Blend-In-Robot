@@ -15,22 +15,34 @@ public class PlayerAnimation : MonoBehaviour
     void Update()
     {
         //Play animations with numpad uncomment anim.Play() to use
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        //Kung Fu
+        if (Input.GetKey(KeyCode.Alpha1))
         {
-            //anim.Play("");
+            anim.Play("kungFu");
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyUp(KeyCode.Alpha1))
         {
-            //anim.Play("");
+            anim.Play("Still");
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        //Surrender
+        else if (Input.GetKey(KeyCode.Alpha2))
         {
-            //anim.Play("");
+            anim.Play("Surrender");
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        else if (Input.GetKeyUp(KeyCode.Alpha2))
         {
-            //anim.Play("");
+            anim.Play("Still");
         }
+        //The Robot
+        else if (Input.GetKey(KeyCode.Alpha3))
+        {
+            anim.Play("theRobot");
+        }
+        else if (Input.GetKeyUp(KeyCode.Alpha3))
+        {
+            anim.Play("Still");
+        }
+
 
 
     }
