@@ -32,12 +32,13 @@ public class AnimationContainer : MonoBehaviour
                     GameObject claw = GameObject.FindGameObjectWithTag("Claw");
                     string clipInfo = robot.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name;
                     string playerClipInfo = player.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name;
-                    
-                    //Debug.Log(robot.name + i++ + " " + clipInfo);
+
+                    Debug.Log(robot.name + " " + clipInfo);
                     currentAnim = clipInfo;
                     if(clipInfo != playerClipInfo)
                     {
-                        ClawAnimation.ClawPlayer(claw, player);
+                        Debug.Log("Loose");
+                        //ClawAnimation.ClawPlayer(claw, player);
                     }
 
                 }
