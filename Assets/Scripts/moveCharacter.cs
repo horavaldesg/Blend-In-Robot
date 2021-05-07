@@ -23,7 +23,8 @@ public class moveCharacter : MonoBehaviour
     private float facingZ = 1;
     private float facingX = 1;
 
-
+    AudioSource walk;
+    public float animt;
 
 
     // Start is called before the first frame update
@@ -32,7 +33,7 @@ public class moveCharacter : MonoBehaviour
         boost = 1;
         anim = GetComponent<Animator>();
         cc = GetComponent<CharacterController>();
-
+        walk = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -61,7 +62,7 @@ public class moveCharacter : MonoBehaviour
         float zSpeed = Input.GetAxis("Horizontal") * speed * boost * Time.deltaTime;
         movement += transform.right * zSpeed;
         anim.SetFloat("Speed Forward", movement.magnitude);
-
+        animt -= Time.deltaTime;
         //Gravtity
 
         verticalSpeed += Gravity * Time.deltaTime;
@@ -239,7 +240,7 @@ public class moveCharacter : MonoBehaviour
             Quaternion rotation = Quaternion.Euler(0, 90, 0);
             transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 4);
             movement += new Vector3(Time.deltaTime * speed * boost, Gravity);
-        }
+        }        
         cc.Move(movement);
     }
 }
