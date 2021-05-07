@@ -31,12 +31,13 @@ public class TargetSript : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (changeScene)
-        {
+        
             if (other.tag == "Robot")
             {
                 Destroy(other.gameObject);
             }
+        if (changeScene)
+        {
             if (other.tag == "Player")
             {
                 
