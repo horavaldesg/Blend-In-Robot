@@ -18,7 +18,7 @@ public class SpotLightDetection : MonoBehaviour
         initialColor = GetComponentInParent<Light>().color;
         red = new Color(0.811f, 0.333f, 0.333f, 1.000f);
         GetComponentInParent<Light>().color = Color.yellow;
-        Debug.Log(initialColor);
+        //Debug.Log(initialColor);
         
         
     }
