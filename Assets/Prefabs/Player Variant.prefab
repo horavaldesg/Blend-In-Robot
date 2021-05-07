@@ -1326,6 +1326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61f315fc2ceda44aeaab882edcca315e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 1a993c9fbd8245c49976912d83639e70, type: 3}
   cc: {fileID: 1405643085}
   checkPos: {fileID: 1305419452}
   groundMask:
@@ -1337,6 +1338,7 @@ MonoBehaviour:
   jumpSpeed: 1
   grounded: 0
   speedBoost: 3
+  animt: 0
 --- !u!114 &4227446728145802760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1359,11 +1361,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 1a993c9fbd8245c49976912d83639e70, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
