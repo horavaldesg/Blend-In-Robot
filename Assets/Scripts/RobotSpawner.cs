@@ -30,6 +30,7 @@ public class RobotSpawner : MonoBehaviour
             GameObject robotObj = Instantiate(robot, spawnerTransform);
             //robotObj.GetComponent<BehaviourScript>().targetLocation = GameObject.FindGameObjectWithTag(target);
             BehaviourScript.targetStr = target;
+            robotObj.GetComponent<BehaviourScript>().staticRobot = false;
             i = 0;
         }
 

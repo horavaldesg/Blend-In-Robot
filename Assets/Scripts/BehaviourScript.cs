@@ -15,21 +15,27 @@ public class BehaviourScript : MonoBehaviour
     float minDistance = 1;
     float safeDistance = 10;
     float specPos = 20;
-    public enum BehaviorState {Move, Idle, Test};
+    public enum BehaviorState {TheRobot, Idle, Test};
     int i = 0;
     public static int state = 1;
+    public bool staticRobot;
     public BehaviorState currentState;
     // Start is called before the first frame update
     void Start()
     {
+        if (!staticRobot)
+        {
+            GameObject targetLocation = GameObject.FindGameObjectWithTag(GetComponentInParent<RobotSpawner>().target);
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
 
-        GameObject targetLocation = GameObject.FindGameObjectWithTag(GetComponentInParent<RobotSpawner>().target);
-        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        target = targetLocation.transform;
-        player = playerObj;
-        audioSc = GetComponent<AudioSource>();
-        agent = GetComponent<NavMeshAgent>();
-        rb = GetComponent<Rigidbody>();
+            
+
+            target = targetLocation.transform;
+            player = playerObj;
+            audioSc = GetComponent<AudioSource>();
+            agent = GetComponent<NavMeshAgent>();
+            rb = GetComponent<Rigidbody>();
+        }
     }
 
     // Update is called once per frame
@@ -44,35 +50,42 @@ public class BehaviourScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-        switch (state)
+        if (!staticRobot)
         {
-            case 1:
-                Move();
-                break;
-            case 2:
-                Idle();
-                break;
-            case 3:
-                Test();
-                break;
-            default:
-                Debug.Log("Switch error");
-                break;
+            switch (state)
+            {
+                case 1:
+                    Move();
+                    break;
+                case 2:
+                    Idle();
+                    break;
+                case 3:
+                    Test();
+                    break;
+                default:
+                    Debug.Log("Switch error");
+                    break;
+            }
         }
-        /*
-        switch (currentState)
+        else if(staticRobot)
         {
-            case BehaviorState.Move: Move();
-                break;
-            case BehaviorState.Idle: Idle();
-                break;
-            case BehaviorState.Test: Test();
-                break;
-            default: Debug.Log("Switch error");
-                break;
+            switch (currentState)
+            {
+                case BehaviorState.TheRobot:
+                    StaticTheRobot();
+                    break;
+                case BehaviorState.Idle:
+                    StaticIdle();
+                    break;
+                case BehaviorState.Test:
+                    Test();
+                    break;
+                default:
+                    Debug.Log("Switch error");
+                    break;
+            }
         }
-        */
        
         
     }
@@ -81,7 +94,6 @@ public class BehaviourScript : MonoBehaviour
     void Idle()
     {
 
-        Vector3 differenceVector = transform.position - target.position;
 
         GetComponent<Animator>().Play("Still");
         agent.destination = transform.position;
@@ -122,5 +134,14 @@ public class BehaviourScript : MonoBehaviour
             //PlayerMovement.canMove = false;
             agent.destination = transform.position;
         }
+    }
+
+    void StaticIdle()
+    {
+        GetComponent<Animator>().Play("Still");
+    }
+    void StaticTheRobot()
+    {
+        GetComponent<Animator>().Play("theRobot");
     }
 }

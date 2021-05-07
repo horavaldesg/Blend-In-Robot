@@ -1223,6 +1223,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Robot
       objectReference: {fileID: 0}
+    - target: {fileID: 5129751015965923075, guid: 7abfa3448a50f458c854f8ac79f9d4a9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5129751015965923075, guid: 7abfa3448a50f458c854f8ac79f9d4a9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Robot
+      objectReference: {fileID: 0}
     - target: {fileID: 5511097466250415545, guid: 7abfa3448a50f458c854f8ac79f9d4a9,
         type: 3}
       propertyPath: m_RootOrder
@@ -1277,6 +1287,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6226520776034676600, guid: 7abfa3448a50f458c854f8ac79f9d4a9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6912980598041901137, guid: 7abfa3448a50f458c854f8ac79f9d4a9,
+        type: 3}
+      propertyPath: staticRobot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6912980598041901137, guid: 7abfa3448a50f458c854f8ac79f9d4a9,
+        type: 3}
+      propertyPath: currentState
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7abfa3448a50f458c854f8ac79f9d4a9, type: 3}
@@ -1825,6 +1850,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Robot (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5129751015965923075, guid: 7abfa3448a50f458c854f8ac79f9d4a9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5129751015965923075, guid: 7abfa3448a50f458c854f8ac79f9d4a9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Robot
+      objectReference: {fileID: 0}
     - target: {fileID: 5511097466250415545, guid: 7abfa3448a50f458c854f8ac79f9d4a9,
         type: 3}
       propertyPath: m_RootOrder
@@ -1879,6 +1914,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6226520776034676600, guid: 7abfa3448a50f458c854f8ac79f9d4a9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6912980598041901137, guid: 7abfa3448a50f458c854f8ac79f9d4a9,
+        type: 3}
+      propertyPath: staticRobot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6912980598041901137, guid: 7abfa3448a50f458c854f8ac79f9d4a9,
+        type: 3}
+      propertyPath: currentState
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7abfa3448a50f458c854f8ac79f9d4a9, type: 3}
@@ -2675,6 +2725,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Robot (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5129751015965923075, guid: 7abfa3448a50f458c854f8ac79f9d4a9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5129751015965923075, guid: 7abfa3448a50f458c854f8ac79f9d4a9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Robot
+      objectReference: {fileID: 0}
     - target: {fileID: 5511097466250415545, guid: 7abfa3448a50f458c854f8ac79f9d4a9,
         type: 3}
       propertyPath: m_RootOrder
@@ -2729,6 +2789,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6226520776034676600, guid: 7abfa3448a50f458c854f8ac79f9d4a9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6912980598041901137, guid: 7abfa3448a50f458c854f8ac79f9d4a9,
+        type: 3}
+      propertyPath: staticRobot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6912980598041901137, guid: 7abfa3448a50f458c854f8ac79f9d4a9,
+        type: 3}
+      propertyPath: currentState
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7abfa3448a50f458c854f8ac79f9d4a9, type: 3}
