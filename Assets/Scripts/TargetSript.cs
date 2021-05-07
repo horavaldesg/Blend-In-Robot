@@ -39,9 +39,11 @@ public class TargetSript : MonoBehaviour
             }
             if (other.tag == "Player")
             {
-                Score.gameOver = true;
+                
                 if (restart)
                 {
+                    Score.gameOver = true;
+                    ScoreText.score = 0;
                     GameObject audioObj = GameObject.FindGameObjectWithTag("Audio");
                     GameObject scoreContainer = GameObject.FindGameObjectWithTag("Score");
                     Destroy(scoreContainer);
