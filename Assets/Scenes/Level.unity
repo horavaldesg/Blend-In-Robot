@@ -7131,7 +7131,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1511513647
 Transform:
@@ -9518,7 +9518,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1726963288
 Transform:
@@ -11422,7 +11422,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2014579840
 Transform:
@@ -12254,11 +12254,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spot Light
       objectReference: {fileID: 0}
+    - target: {fileID: 424626479950295031, guid: fd0eac1d436b14de794ac519dbf0f744,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 424626481438183942, guid: fd0eac1d436b14de794ac519dbf0f744,
         type: 3}
       propertyPath: lightTransform
       value: 
       objectReference: {fileID: 33941948}
+    - target: {fileID: 424626481438183945, guid: fd0eac1d436b14de794ac519dbf0f744,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd0eac1d436b14de794ac519dbf0f744, type: 3}
 --- !u!1001 &4935764491491079682
