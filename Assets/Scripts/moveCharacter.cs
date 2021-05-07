@@ -45,6 +45,7 @@ public class moveCharacter : MonoBehaviour
         }
         else if(Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
         {
+
             walk.Pause();
         }
         //Brednan Edits
