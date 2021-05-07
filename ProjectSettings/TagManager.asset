@@ -9,6 +9,7 @@ TagManager:
   - Target 2
   - Spawner
   - StopLight
+  - Claw
   layers:
   - Default
   - TransparentFX

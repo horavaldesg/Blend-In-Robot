@@ -216,21 +216,21 @@ public class moveCharacter : MonoBehaviour
         {
             Quaternion rotation = Quaternion.Euler(0, 0, 0);
             transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 4);
-            movement += new Vector3(0, 0, Time.deltaTime * speed * boost);
+            movement += new Vector3(0, Gravity, Time.deltaTime * speed * boost);
         }
         //S
         else if (facingZ < 0)
         {
             Quaternion rotation = Quaternion.Euler(0, 180, 0);
             transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 4);
-            movement += new Vector3(0, 0, -Time.deltaTime * speed * boost);
+            movement += new Vector3(0, Gravity, -Time.deltaTime * speed * boost);
         }
         //A
         if (facingX < 0)
         {
             Quaternion rotation = Quaternion.Euler(0, -90, 0);
             transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 4);
-            movement += new Vector3(-Time.deltaTime * speed * boost, 0);
+            movement += new Vector3(-Time.deltaTime * speed * boost, Gravity);
         }
 
         //D
@@ -238,7 +238,7 @@ public class moveCharacter : MonoBehaviour
         {
             Quaternion rotation = Quaternion.Euler(0, 90, 0);
             transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 4);
-            movement += new Vector3(Time.deltaTime * speed * boost, 0);
+            movement += new Vector3(Time.deltaTime * speed * boost, Gravity);
         }
         cc.Move(movement);
     }

@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 public class TargetSript : MonoBehaviour
 {
     GameObject cameraObj;
+    public bool changeScene;
+    public string scene;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,16 +25,21 @@ public class TargetSript : MonoBehaviour
             StopLight.trigger = true;
             cameraObj.GetComponent<Camera>().fieldOfView = 85;
         }
-            
-        /*
-        if(other.tag == "Robot")
+
+        
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (changeScene)
         {
-            Destroy(other.gameObject);
+            if (other.tag == "Robot")
+            {
+                Destroy(other.gameObject);
+            }
+            if (other.tag == "Player")
+            {
+                SceneManager.LoadScene(scene); ;
+            }
         }
-        if(other.tag == "Player")
-        {
-            SceneManager.LoadScene("End");
-        }
-        */
     }
 }

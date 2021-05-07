@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class SpotLightDetection : MonoBehaviour
 {
     BehaviourScript bs;
+    GameObject claw;
+    GameObject player;
     public Transform lightTransform;
     Color initialColor;
     Color red;
@@ -15,12 +17,16 @@ public class SpotLightDetection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+        claw = GameObject.FindGameObjectWithTag("Claw");
+        //claw.SetActive(false);
         initialColor = GetComponentInParent<Light>().color;
         red = new Color(0.811f, 0.333f, 0.333f, 1.000f);
         GetComponentInParent<Light>().color = Color.yellow;
         //Debug.Log(initialColor);
         
-        
+
+
     }
 
     // Update is called once per frame
@@ -80,9 +86,12 @@ public class SpotLightDetection : MonoBehaviour
                     {
                         //Debug.Log(currentAnim[0].clip.name);
                         GetComponentInParent<Light>().color = red;
-                        ClawPlayer();
+                        //ClawPlayer();
+                        ClawAnimation.ClawPlayer(claw, player);
+                        //StartCoroutine(changeScene());
                         //Debug.Log(currentClip[0].clip.name);
-                        Debug.Log("Wrong Anim");
+                        //claw.SetActive(true);
+                        //Debug.Log("Wrong Anim");
                     }
                 }
 
@@ -103,15 +112,7 @@ public class SpotLightDetection : MonoBehaviour
         GetComponentInParent<Light>().spotAngle = 30;
         GetComponentInParent<Animator>().enabled = true;
     }
-    void ClawPlayer()
-    {
-
-        //GetComponent<Collider>().enabled = false;
-        //Time.timeScale = 0;
-        Debug.Log("Wrong Anim");
-        Debug.Log("PlayerClawed");
-        
-
-    }
+    
+    
 
 }
