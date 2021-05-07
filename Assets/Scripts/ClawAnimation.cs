@@ -35,10 +35,14 @@ public class ClawAnimation : MonoBehaviour
     {
 
         yield return new WaitForSeconds(2.5f);
-        GameObject audioObj = GameObject.FindGameObjectWithTag("Audio");
+        GameObject[] audioObj = GameObject.FindGameObjectsWithTag("Audio");
         GameObject scoreContainer = GameObject.FindGameObjectWithTag("Score");
         Destroy(scoreContainer);
-        Destroy(audioObj);
+        foreach(GameObject audio in audioObj)
+        {
+            Destroy(audio);
+        }
+        
         ScoreText.score = 0;
         SceneManager.LoadScene("Title Screen");
     }
