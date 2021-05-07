@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class TargetSript : MonoBehaviour
 {
+    GameObject cameraObj;
     // Start is called before the first frame update
     void Start()
     {
-        
+        cameraObj = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     // Update is called once per frame
@@ -15,8 +16,15 @@ public class TargetSript : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerExit(Collider other)
     {
+        if(other.tag == "Player")
+        {
+            StopLight.trigger = true;
+            cameraObj.GetComponent<Camera>().fieldOfView = 85;
+        }
+            
+        /*
         if(other.tag == "Robot")
         {
             Destroy(other.gameObject);
@@ -25,5 +33,6 @@ public class TargetSript : MonoBehaviour
         {
             SceneManager.LoadScene("End");
         }
+        */
     }
 }

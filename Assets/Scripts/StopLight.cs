@@ -8,11 +8,12 @@ public class StopLight : MonoBehaviour
     [SerializeField] GameObject[] stopLights;
     int lightLength = 0;
     [SerializeField]int rate;
-
+    public static bool trigger;
     float i = 0;
     // Start is called before the first frame update
     void Start()
     {
+        trigger = false;
         lights = GameObject.FindGameObjectsWithTag("StopLight");
         foreach(GameObject light in stopLights)
         {
@@ -25,6 +26,7 @@ public class StopLight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (trigger) { 
         i += Time.deltaTime;
         //Debug.Log(i);
         if(i > rate && i < rate + rate)
@@ -44,39 +46,39 @@ public class StopLight : MonoBehaviour
         {
            
             lights = GameObject.FindGameObjectsWithTag("StopLight");
-            foreach (GameObject light in lights)
-            {
-                Color lightColor = light.GetComponent<Light>().color;
-                if (lightColor == Color.red)
+                foreach (GameObject light in lights)
                 {
-                    BehaviourScript.state = 2;
-                }
-                else if (lightColor == Color.green)
-                {
-                    BehaviourScript.state = 1;
-                }
-                else if(lightColor == Color.yellow)
-                {
-
-                }
-
-                if (BehaviourScript.state == 2)
-                {
-                    GameObject[] spawners = GameObject.FindGameObjectsWithTag("Spawner");
-                    foreach (GameObject spawner in spawners)
+                    Color lightColor = light.GetComponent<Light>().color;
+                    if (lightColor == Color.red)
                     {
-                        spawner.GetComponent<RobotSpawner>().enabled = false;
+                        BehaviourScript.state = 2;
+                    }
+                    else if (lightColor == Color.green)
+                    {
+                        BehaviourScript.state = 1;
+                    }
+                    else if (lightColor == Color.yellow)
+                    {
+
+                    }
+
+                    if (BehaviourScript.state == 2)
+                    {
+                        GameObject[] spawners = GameObject.FindGameObjectsWithTag("Spawner");
+                        foreach (GameObject spawner in spawners)
+                        {
+                            spawner.GetComponent<RobotSpawner>().enabled = false;
+                        }
+                    }
+                    else
+                    {
+                        GameObject[] spawners = GameObject.FindGameObjectsWithTag("Spawner");
+                        foreach (GameObject spawner in spawners)
+                        {
+                            spawner.GetComponent<RobotSpawner>().enabled = true;
+                        }
                     }
                 }
-                else
-                {
-                    GameObject[] spawners = GameObject.FindGameObjectsWithTag("Spawner");
-                    foreach (GameObject spawner in spawners)
-                    {
-                        spawner.GetComponent<RobotSpawner>().enabled = true;
-                    }
-                }
-
             }
         }
     }
