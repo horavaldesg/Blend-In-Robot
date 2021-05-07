@@ -6,6 +6,7 @@ public class TargetSript : MonoBehaviour
 {
     GameObject cameraObj;
     public bool changeScene;
+    public bool restart;
     public string scene;
     // Start is called before the first frame update
     void Start()
@@ -38,7 +39,12 @@ public class TargetSript : MonoBehaviour
             }
             if (other.tag == "Player")
             {
-                SceneManager.LoadScene(scene); ;
+                if (restart)
+                {
+                    GameObject audioObj = GameObject.FindGameObjectWithTag("Audio");
+                    Destroy(audioObj);
+                }
+                SceneManager.LoadScene(scene);
             }
         }
     }
