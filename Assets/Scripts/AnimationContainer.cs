@@ -21,7 +21,7 @@ public class AnimationContainer : MonoBehaviour
         if (robots != null)
         {
             i += Time.deltaTime;
-            Debug.Log(i);
+            //Debug.Log(i);
             robots = GameObject.FindGameObjectsWithTag("Robot");
             //Debug.Log(robots.Length -2);
             foreach (GameObject robot in robots)
@@ -34,11 +34,11 @@ public class AnimationContainer : MonoBehaviour
                 }
                 if (i > rate)
                 {
-                    BehaviourScript.state = Random.Range(1, 3);
-                    Debug.Log(BehaviourScript.state);
+                    BehaviourScript.state = Random.Range(1, 6);
+                    //Debug.Log(BehaviourScript.state);
                     i = 0;
                 }
-                if(BehaviourScript.state == 2)
+                if(BehaviourScript.state == 2 || BehaviourScript.state == 5)
                 {
                     GameObject[] spawners = GameObject.FindGameObjectsWithTag("Spawner");
                     foreach(GameObject spawner in spawners)

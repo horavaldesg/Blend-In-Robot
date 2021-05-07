@@ -26,7 +26,7 @@ public class RobotAnimationController : MonoBehaviour
     void RandomRobot(GameObject[] robots)
     {
         int i = Random.Range(0, robots.Length);
-        robots[i].GetComponent<BehaviourScript>().currentState = BehaviourScript.BehaviorState.Test;
+        //robots[i].GetComponent<BehaviourScript>().currentState = BehaviourScript.BehaviorState.Test;
         randomRobot = false;
     }
 }

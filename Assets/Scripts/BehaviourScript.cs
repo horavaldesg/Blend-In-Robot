@@ -15,14 +15,15 @@ public class BehaviourScript : MonoBehaviour
     float minDistance = 1;
     float safeDistance = 10;
     float specPos = 20;
-    public enum BehaviorState {TheRobot, Idle, Test};
+    enum BehaviorState {TheRobot, Idle, Test, KungFu, Surrender, Move};
     int i = 0;
     public static int state = 1;
     public bool staticRobot;
-    public BehaviorState currentState;
+    BehaviorState currentState;
     // Start is called before the first frame update
     void Start()
     {
+        currentState = BehaviorState.Move;
         if (!staticRobot)
         {
             GameObject targetLocation = GameObject.FindGameObjectWithTag(GetComponentInParent<RobotSpawner>().target);
@@ -50,6 +51,7 @@ public class BehaviourScript : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Debug.Log(currentState);
         if (!staticRobot)
         {
             switch (state)
@@ -61,31 +63,45 @@ public class BehaviourScript : MonoBehaviour
                     Idle();
                     break;
                 case 3:
-                    Test();
+                    KungFu();
+                    break;
+                case 4:
+                    TheRobot();
+                    break;
+                case 5:
+                    Surrender();
                     break;
                 default:
                     Debug.Log("Switch error");
                     break;
             }
         }
+        
         else if(staticRobot)
         {
-            switch (currentState)
+            switch (state)
             {
-                case BehaviorState.TheRobot:
-                    StaticTheRobot();
+                case 1:
+                    StaticMove();
                     break;
-                case BehaviorState.Idle:
+                case 2:
                     StaticIdle();
                     break;
-                case BehaviorState.Test:
-                    Test();
+                case 3:
+                    StaticKungFu();
+                    break;
+                case 4:
+                    StaticTheRobot();
+                    break;
+                case 5:
+                    StaticSurrender();
                     break;
                 default:
                     Debug.Log("Switch error");
                     break;
             }
         }
+        
        
         
     }
@@ -97,8 +113,8 @@ public class BehaviourScript : MonoBehaviour
 
         GetComponent<Animator>().Play("Still");
         agent.destination = transform.position;
-        
 
+        StaticIdle();
 
     }
     void Move()
@@ -117,6 +133,9 @@ public class BehaviourScript : MonoBehaviour
             //PlayerMovement.canMove = false;
             agent.destination = transform.position;
         }
+        currentState = BehaviorState.Move;
+        //StaticMove();
+        
     }
     void Test()
     {
@@ -136,6 +155,23 @@ public class BehaviourScript : MonoBehaviour
         }
     }
 
+    void KungFu()
+    {
+        GetComponent<Animator>().Play("kungFu");
+        currentState = BehaviorState.KungFu;
+    }
+    void TheRobot()
+    {
+        GetComponent<Animator>().Play("theRobot");
+        currentState = BehaviorState.TheRobot;
+    }
+    void Surrender()
+    {
+        GetComponent<Animator>().Play("Surrender");
+        agent.destination = transform.position;
+        currentState = BehaviorState.Surrender;
+    }
+
     void StaticIdle()
     {
         GetComponent<Animator>().Play("Still");
@@ -144,4 +180,18 @@ public class BehaviourScript : MonoBehaviour
     {
         GetComponent<Animator>().Play("theRobot");
     }
+    void StaticKungFu()
+    {
+        GetComponent<Animator>().Play("kungFu");
+    }
+    void StaticSurrender()
+    {
+        GetComponent<Animator>().Play("Surrender");
+    }
+    void StaticMove()
+    {
+        GetComponent<Animator>().Play("RobotWalk");
+        //Move();
+    }
+
 }
