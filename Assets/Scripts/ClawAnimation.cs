@@ -27,12 +27,16 @@ public class ClawAnimation : MonoBehaviour
         claw.GetComponent<Animator>().Play("ClawGrab");
         player.GetComponent<Animator>().Play("RobotClawwed");
         //SceneManager.LoadScene("Title Screen");
+
         thisScript.StartCoroutine(thisScript.changeScene(claw));
         
     }
     IEnumerator changeScene(GameObject claw)
     {
+
         yield return new WaitForSeconds(2.5f);
+        GameObject audioObj = GameObject.FindGameObjectWithTag("Audio");
+        Destroy(audioObj);
         SceneManager.LoadScene("Title Screen");
     }
 
