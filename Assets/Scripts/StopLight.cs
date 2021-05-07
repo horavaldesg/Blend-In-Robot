@@ -51,17 +51,49 @@ public class StopLight : MonoBehaviour
                     Color lightColor = light.GetComponent<Light>().color;
                     if (lightColor == Color.red)
                     {
+                        GameObject[] robots = GameObject.FindGameObjectsWithTag("Robot");
+                        GameObject player = GameObject.FindGameObjectWithTag("Player");
+                        if(robots != null)
+                        {
+                            foreach(GameObject robot in robots)
+                            {
+                                if(robot != null)
+                                {
+                                    string robotClipName = robot.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name;
+                                    string playerClipName = player.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name;
+                                    GameObject claw = GameObject.FindGameObjectWithTag("Claw");
+                                    if (robotClipName != playerClipName)
+                                    {
+                                        ClawAnimation.ClawPlayer(claw, player);
+                                    }
+                                }
+                            }
+                        }
                         BehaviourScript.state = 2;
                     }
                     else if (lightColor == Color.green)
                     {
                         BehaviourScript.state = 1;
+                        GameObject[] robots = GameObject.FindGameObjectsWithTag("Robot");
+                        GameObject player = GameObject.FindGameObjectWithTag("Player");
+                        if (robots != null)
+                        {
+                            foreach (GameObject robot in robots)
+                            {
+                                if (robot != null)
+                                {
+                                    string robotClipName = robot.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name;
+                                    string playerClipName = player.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name;
+                                    GameObject claw = GameObject.FindGameObjectWithTag("Claw");
+                                    if (robotClipName != playerClipName)
+                                    {
+                                        ClawAnimation.ClawPlayer(claw, player);
+                                    }
+                                }
+                            }
+                        }
                     }
-                    else if (lightColor == Color.yellow)
-                    {
-
-                    }
-
+                   
                     if (BehaviourScript.state == 2)
                     {
                         GameObject[] spawners = GameObject.FindGameObjectsWithTag("Spawner");

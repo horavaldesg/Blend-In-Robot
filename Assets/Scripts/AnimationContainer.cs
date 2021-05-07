@@ -28,9 +28,19 @@ public class AnimationContainer : MonoBehaviour
             {
                 if (robot != null)
                 {
+                    GameObject player = GameObject.FindGameObjectWithTag("Player");
+                    GameObject claw = GameObject.FindGameObjectWithTag("Claw");
                     string clipInfo = robot.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name;
-                    //Debug.Log(robot.name + i++ + " " + clipInfo);
+                    string playerClipInfo = player.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name;
+
+                    Debug.Log(robot.name + " " + clipInfo);
                     currentAnim = clipInfo;
+                    if(clipInfo != playerClipInfo)
+                    {
+                        Debug.Log("Loose");
+                        //ClawAnimation.ClawPlayer(claw, player);
+                    }
+
                 }
                 if (i > rate)
                 {
@@ -54,6 +64,7 @@ public class AnimationContainer : MonoBehaviour
                         spawner.GetComponent<RobotSpawner>().enabled = true;
                     }
                 }
+                
                
             }
         }
