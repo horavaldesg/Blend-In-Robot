@@ -5619,7 +5619,7 @@ GameObject:
   - component: {fileID: 1178188887}
   - component: {fileID: 1178188886}
   m_Layer: 0
-  m_Name: Background Audio
+  m_Name: Ambient Audio
   m_TagString: Audio
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5663,7 +5663,7 @@ AudioSource:
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
-  BypassReverbZones: 0
+  BypassReverbZones: 1
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
